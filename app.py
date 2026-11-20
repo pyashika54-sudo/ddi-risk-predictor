@@ -181,7 +181,7 @@ def analyze_prescription(selected_drugs):
                     {level} ({risk_prob}%) · {status_label}
                 </span>
             </div>
-            <p style="margin:0; font-size:14px; color:#1e293b !important; line-height:1.5;"><b style="color:#000000 !important;">Why:</b> {reason}</p>
+           <div style="margin:0; font-size:14px; color:#1e293b; line-height:1.5;"><span style="font-weight:700; color:#000000;">Why:</span> {reason}</div>
         </div>
         """
 
@@ -208,10 +208,10 @@ def analyze_prescription(selected_drugs):
     else:
         bg, border, text, verdict = "#d1fae5", "#10b981", "#065f46", "LOW RISK — COMBINATION APPEARS SAFE"
 
-    banner_html = f"""
-    <div style="padding:18px; border-radius:12px; background:{bg}; border-left:6px solid {border}; color:{text};">
-        <h3 style="margin:0 0 6px 0; font-size:20px;">{verdict}</h3>
-        <p style="margin:0; font-size:15px;">Analyzed <b>{len(pairs)}</b> drug pair(s) | Highest Predicted Risk: <b>{max_risk}%</b></p>
+   banner_html = f"""
+    <div style="padding:18px; border-radius:12px; background:{bg}; border-left:6px solid {border}; color:#000000;">
+        <div style="margin:0 0 6px 0; font-size:20px; font-weight:700; color:#000000;">{verdict}</div>
+        <div style="margin:0; font-size:15px; color:#000000;">Analyzed <span style="font-weight:700; color:#000000;">{len(pairs)}</span> drug pair(s) | Highest Predicted Risk: <span style="font-weight:700; color:#000000;">{max_risk}%</span></div>
     </div>
     """
 
