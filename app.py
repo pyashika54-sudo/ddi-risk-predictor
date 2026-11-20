@@ -131,7 +131,7 @@ def build_network_plot(selected_drugs, pair_results):
 def analyze_prescription(selected_drugs):
     if not selected_drugs or len(selected_drugs) < 2:
         return (
-            "<div style='padding:16px; border-radius:10px; background:#fef3c7; color:#92400e; font-weight:600;'>"
+            "<div style='padding:16px; border-radius:10px; background:#fef3c7; color:#000000; font-weight:600;'>"
             "Please select at least 2 drugs to analyze polypharmacy risk.</div>",
             "",
             pd.DataFrame(),
@@ -181,7 +181,7 @@ def analyze_prescription(selected_drugs):
                     {level} ({risk_prob}%) · {status_label}
                 </span>
             </div>
-           <div style="margin:0; font-size:14px; color:#1e293b; line-height:1.5;"><span style="font-weight:700; color:#000000;">Why:</span> {reason}</div>
+            <div style="margin:0; font-size:14px; color:#1e293b; line-height:1.5;"><span style="font-weight:700; color:#000000;">Why:</span> {reason}</div>
         </div>
         """
 
@@ -202,13 +202,13 @@ def analyze_prescription(selected_drugs):
     has_mod = any(r["Risk Level"] == "Moderate Risk" for r in pair_results)
 
     if has_high:
-        bg, border, text, verdict = "#ffe4e6", "#f43f5e", "#9f1239", "HIGH POLYPHARMACY RISK DETECTED"
+        bg, border, verdict = "#ffe4e6", "#f43f5e", "HIGH POLYPHARMACY RISK DETECTED"
     elif has_mod:
-        bg, border, text, verdict = "#fef3c7", "#f59e0b", "#92400e", "MODERATE INTERACTION RISK"
+        bg, border, verdict = "#fef3c7", "#f59e0b", "MODERATE INTERACTION RISK"
     else:
-        bg, border, text, verdict = "#d1fae5", "#10b981", "#065f46", "LOW RISK — COMBINATION APPEARS SAFE"
+        bg, border, verdict = "#d1fae5", "#10b981", "LOW RISK — COMBINATION APPEARS SAFE"
 
-   banner_html = f"""
+    banner_html = f"""
     <div style="padding:18px; border-radius:12px; background:{bg}; border-left:6px solid {border}; color:#000000;">
         <div style="margin:0 0 6px 0; font-size:20px; font-weight:700; color:#000000;">{verdict}</div>
         <div style="margin:0; font-size:15px; color:#000000;">Analyzed <span style="font-weight:700; color:#000000;">{len(pairs)}</span> drug pair(s) | Highest Predicted Risk: <span style="font-weight:700; color:#000000;">{max_risk}%</span></div>
