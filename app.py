@@ -181,7 +181,7 @@ def analyze_prescription(selected_drugs):
                     {level} ({risk_prob}%) · {status_label}
                 </span>
             </div>
-            <p style="margin:0; font-size:14px; color:#334155; line-height:1.5;"><b>Why:</b> {reason}</p>
+            <p style="margin:0; font-size:14px; color:#1e293b !important; line-height:1.5;"><b style="color:#000000 !important;">Why:</b> {reason}</p>
         </div>
         """
 
