@@ -1,0 +1,8 @@
+gradio
+plotly
+networkx
+scikit-learn 
+joblib 
+pandas 
+numpy
+requests
